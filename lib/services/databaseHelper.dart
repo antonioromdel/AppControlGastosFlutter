@@ -35,6 +35,7 @@ class Databasehelper {
       CREATE TABLE transactions(
         id TEXT PRIMARY KEY,
         category TEXT,
+        description TEXT,
         amount REAL,
         type TEXT,
         date TEXT
@@ -44,7 +45,7 @@ class Databasehelper {
 
   Future<void> insertTransaction(MyTransaction.Transaction transaction) async {
     final db = await database;
-    await db.insert('transaction', transaction.toMap(),
+    await db.insert('transactions', transaction.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
